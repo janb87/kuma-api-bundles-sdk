@@ -1,7 +1,6 @@
 require('isomorphic-fetch');
 const fs = require('fs-extra');
 const dtsGenerator = require('./overwrites/dtsGenerator');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const DIST_PATH = './src/api/typings.d.ts';
 

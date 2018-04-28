@@ -14,7 +14,8 @@ export default class NodeService {
             const {baseUrl} = this.config
             const response = await fetch(`${baseUrl}/api/nodes`)
             const nodes = await response.json()
-            return nodes as Definitions.INodeList
+            // TODO: hateoas support
+            return nodes._embedded.items as Definitions.INodeList
         } catch (err) {
             console.error(err)
             throw err
