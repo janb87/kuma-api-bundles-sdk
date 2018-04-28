@@ -9,9 +9,12 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  },
   "devDependencies": {
     "dtsgenerator": "^1.0.0",
     "fs-extra": "^5.0.0",
-    "isomorphic-fetch": "^2.2.1"
+    "typescript": "^2.8.3"
   }
 }

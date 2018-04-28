@@ -1,9 +1,9 @@
 require('isomorphic-fetch');
 const fs = require('fs-extra');
-const dtsGenerator = require('../overwrites/dtsGenerator');
+const dtsGenerator = require('./overwrites/dtsGenerator');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const DIST_PATH = './dist/typings.d.ts';
+const DIST_PATH = './src/api/typings.d.ts';
 
 function typeNameConvertor(id) {
   const names = dtsGenerator.DefaultTypeNameConvertor(id);
@@ -14,7 +14,7 @@ function typeNameConvertor(id) {
   return names;
 }
 
-const SWAGGER_URL = 'https://will.dev.kunstmaan.be/api/doc.json';
+const SWAGGER_URL = 'https://will.dev.kunstmaan.be/app_dev.php/api/doc.json';
 fetch(SWAGGER_URL)
   .then(async function(response) {
     if (response.status >= 400) {
