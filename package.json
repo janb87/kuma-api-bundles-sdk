@@ -11,10 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
-    "@types/isomorphic-fetch": "0.0.34",
     "@types/jest": "^22.2.3",
     "dtsgenerator": "^1.0.0",
     "fs-extra": "^5.0.0",

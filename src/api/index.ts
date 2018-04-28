@@ -1,4 +1,3 @@
-import 'isomorphic-fetch'
-import NodeService from './services/node'
+import NodeService from './services/node';
 
-export {NodeService}
+export { NodeService };
