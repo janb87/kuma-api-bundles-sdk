@@ -1,20 +1,9 @@
-const sw2dts = require('sw2dts');
-var utils = require('dtsgenerator/dist/core/utils');
-const origToTsType = utils.toTSType;
-utils.toTSType = function(type, debugSource) {
-  switch (type) {
-    case 'id':
-      return 'string';
-    case 'datetime':
-      return 'Date';
-    default:
-      return origToTsType(type, debugSource);
-  }
-};
-
-const dtsGenerator = require('dtsgenerator');
 require('isomorphic-fetch');
+const fs = require('fs-extra');
+const dtsGenerator = require('../overwrites/dtsGenerator');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+const DIST_PATH = './dist/typings.d.ts';
 
 function typeNameConvertor(id) {
   const names = dtsGenerator.DefaultTypeNameConvertor(id);
@@ -35,11 +24,21 @@ fetch(SWAGGER_URL)
     try {
       const content = await response.json();
 
-      const result = await dtsGenerator.default({
+      const typings = await dtsGenerator.default({
         contents: [content],
         typeNameConvertor
       });
-      console.log(result);
+      fs.ensureFile(DIST_PATH, err => {
+        if (err) {
+          return Promise.reject(err);
+        }
+        fs.writeFile(DIST_PATH, typings, err => {
+          if (err) {
+            return Promise.reject(err);
+          }
+          console.log('Typings created')
+        });
+      });
     } catch (err) {
       return Promise.reject(err);
     }
