@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "umd",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "./dist",
+        "sourceMap": true,
+        "lib": [
+            "es2015",
+            "es2015.promise",
+            "dom"
+        ],
+        "target": "es5"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
