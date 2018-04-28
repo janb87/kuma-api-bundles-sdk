@@ -1,5 +1,8 @@
 import axios from 'axios'
 import path from 'path'
+import { PageService } from '../dist/index'
+
+const baseUrl = 'https://will.dev.kunstmaan.be/app_dev.php'
 
 // Paths Aliases defined through tsconfig.json
 const typescriptWebpackPaths = require('./webpack.config.js')
@@ -11,6 +14,9 @@ export default {
   }),
   getRoutes: async () => {
     const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    const pageService = new PageService({ baseUrl })
+    const allPagePartsPage = await pageService.getPage('23')
+
     return [
       {
         path: '/',
@@ -33,6 +39,13 @@ export default {
             post,
           }),
         })),
+      },
+      {
+        path: '/will-test',
+        component: 'src/containers/AllPageParts',
+        getData: () => ({
+          page: allPagePartsPage,
+        }),
       },
       {
         is404: true,

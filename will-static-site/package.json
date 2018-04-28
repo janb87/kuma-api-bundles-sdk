@@ -4,10 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "react-static start",
-    "stage": "react-static build --staging",
-    "build": "react-static build",
-    "serve": "serve dist -p 3000"
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED=0 react-static start",
+    "stage": "NODE_TLS_REJECT_UNAUTHORIZED=0 react-static build --staging",
+    "build": "NODE_TLS_REJECT_UNAUTHORIZED=0 react-static build",
+    "serve": "NODE_TLS_REJECT_UNAUTHORIZED=0 serve dist -p 3000"
   },
   "dependencies": {
     "axios": "^0.18.0",
