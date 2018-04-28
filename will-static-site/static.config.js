@@ -10,10 +10,9 @@ const typescriptWebpackPaths = require('./webpack.config.js')
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
   getSiteData: () => ({
-    title: 'React Static2 ',
+    title: 'Will ',
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
     const pageService = new PageService({ baseUrl })
     const allPagePartsPage = await pageService.getPage('23')
 
@@ -21,31 +20,6 @@ export default {
       {
         path: '/',
         component: 'src/containers/Home',
-      },
-      {
-        path: '/about',
-        component: 'src/containers/About',
-      },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => ({
-          posts,
-        }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
-      },
-      {
-        path: '/will-test',
-        component: 'src/containers/AllPageParts',
-        getData: () => ({
-          page: allPagePartsPage,
-        }),
       },
       {
         is404: true,

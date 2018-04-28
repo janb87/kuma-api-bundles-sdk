@@ -10,4 +10,8 @@ Consists out of:
 
 Still to do:
 
-1. Custom react-static template for kunstmaan bundles
+1. Generator for page types (from api our yaml file)
+2. Generator for regions (derived from page tpes)
+3. Generator for page parts
+4. Generator for routes (get all slugs from page tree)
+5. Custom react-static template for kunstmaan bundles

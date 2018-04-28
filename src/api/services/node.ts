@@ -9,6 +9,11 @@ interface IGetNodesResponse {
   _embedded: { items: Definitions.INodeList };
 }
 
+interface IPagingParams {
+  page: number
+  limit: number
+}
+
 export default class NodeService {
   private config: IConfig;
 
@@ -16,7 +21,7 @@ export default class NodeService {
     this.config = config;
   }
 
-  public async getNodes(): Promise<Definitions.INodeList> {
+  public async getNodes({paging}: {paging: IPagingParams}): Promise<Definitions.INodeList> {
     try {
       const { baseUrl } = this.config;
       const response = await axios.get<IGetNodesResponse>(
@@ -30,7 +35,7 @@ export default class NodeService {
     }
   }
 
-  public async getNode(nodeId: string): Promise<Definitions.IGetNode> {
+  public async getNode(nodeId: string, {paging}: {paging: IPagingParams}): Promise<Definitions.IGetNode> {
     try {
       const { baseUrl } = this.config;
       const response = await axios.get<Definitions.IGetNode>(

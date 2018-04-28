@@ -11,9 +11,7 @@ const App = () => (
     <div>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/will-test">Will tests</Link>
+        { /* TODO add all urls */ }
       </nav>
       <div className="content">
         <Routes />
