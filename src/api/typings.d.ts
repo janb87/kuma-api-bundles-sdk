@@ -53,6 +53,8 @@ declare namespace Definitions {
             title?: string;
             lang?: string;
             online?: boolean;
+            slug?: string;
+            url?: string;
         };
     }
     export interface IApiPagePart {
@@ -135,6 +137,8 @@ declare namespace Definitions {
             title?: string;
             lang?: string;
             online?: boolean;
+            slug?: string;
+            url?: string;
         };
     }
     export interface IGetNode {
@@ -182,6 +186,8 @@ declare namespace Definitions {
         title?: string;
         lang?: string;
         online?: boolean;
+        slug?: string;
+        url?: string;
     }
     export interface INodeVersion {
         id?: number;
@@ -226,6 +232,8 @@ declare namespace Definitions {
             title?: string;
             lang?: string;
             online?: boolean;
+            slug?: string;
+            url?: string;
         };
     }
     export interface IPostNode {
@@ -244,6 +252,8 @@ declare namespace Definitions {
         title?: string;
         lang?: string;
         online?: boolean;
+        slug?: string;
+        url?: string;
     }
     export interface IPostTranslation {
         keyword?: string;
@@ -302,6 +312,8 @@ declare namespace Definitions {
             title?: string;
             lang?: string;
             online?: boolean;
+            slug?: string;
+            url?: string;
         };
     }
     export interface IPutTranslation {

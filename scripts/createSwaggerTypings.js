@@ -1,4 +1,4 @@
-require('isomorphic-fetch');
+const axios = require('axios')
 const fs = require('fs-extra');
 const dtsGenerator = require('./overwrites/dtsGenerator');
 
@@ -14,14 +14,14 @@ function typeNameConvertor(id) {
 }
 
 const SWAGGER_URL = 'https://will.dev.kunstmaan.be/app_dev.php/api/doc.json';
-fetch(SWAGGER_URL)
+axios.get(SWAGGER_URL)
   .then(async function(response) {
     if (response.status >= 400) {
       throw new Error('Bad response from server');
     }
 
     try {
-      const content = await response.json();
+      const content = response.data
 
       const typings = await dtsGenerator.default({
         contents: [content],

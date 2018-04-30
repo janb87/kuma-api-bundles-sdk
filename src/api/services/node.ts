@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const DEFAULT_PAGING_OPTIONS: IPagingParams = {page: 1, limit: 150};
+
 interface IConfig {
   baseUrl: string;
 }
@@ -10,8 +12,8 @@ interface IGetNodesResponse {
 }
 
 interface IPagingParams {
-  page: number
-  limit: number
+  page: number;
+  limit: number;
 }
 
 export default class NodeService {
@@ -21,11 +23,13 @@ export default class NodeService {
     this.config = config;
   }
 
-  public async getNodes({paging}: {paging: IPagingParams}): Promise<Definitions.INodeList> {
+  public async getNodes(
+    { paging }: { paging: IPagingParams } = {paging: DEFAULT_PAGING_OPTIONS}
+  ): Promise<Definitions.INodeList> {
     try {
       const { baseUrl } = this.config;
       const response = await axios.get<IGetNodesResponse>(
-        `${baseUrl}/api/nodes`
+        `${baseUrl}/api/nodes?limit=${paging.limit}&page=${paging.page}`
       );
 
       return response.data._embedded.items;
@@ -35,13 +39,16 @@ export default class NodeService {
     }
   }
 
-  public async getNode(nodeId: string, {paging}: {paging: IPagingParams}): Promise<Definitions.IGetNode> {
+  public async getNode(
+    nodeId: string,
+    { paging }: { paging: IPagingParams } = {paging: DEFAULT_PAGING_OPTIONS}
+  ): Promise<Definitions.IGetNode> {
     try {
       const { baseUrl } = this.config;
       const response = await axios.get<Definitions.IGetNode>(
         `${baseUrl}/api/nodes/${encodeURIComponent(nodeId)}`
       );
-      return response.data
+      return response.data;
     } catch (err) {
       console.error(err);
       throw err;

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import path from 'path'
-import { PageService } from '../dist/index'
+import { PageService } from '../dist/api/index'
 
 const baseUrl = 'https://will.dev.kunstmaan.be/app_dev.php'
 
@@ -19,11 +19,11 @@ export default {
     return [
       {
         path: '/',
-        component: 'src/containers/Home',
+        component: 'src/pages/Home',
       },
       {
         is404: true,
-        component: 'src/containers/404',
+        component: 'src/pages/404',
       },
     ]
   },

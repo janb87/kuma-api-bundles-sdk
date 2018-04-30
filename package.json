@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf ./dist",
     "build": "tsc",
     "test": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest",
-    "createSwaggerTypings": "NODE_TLS_REJECT_UNAUTHORIZED=0 node ./scripts/createSwaggerTypings.js"
+    "createSwaggerTypings": "NODE_TLS_REJECT_UNAUTHORIZED=0 node ./scripts/createSwaggerTypings.js",
+    "generateStaticSite": "NODE_TLS_REJECT_UNAUTHORIZED=0 node ./scripts/createStaticPages.js"
   },
   "author": "",
   "license": "ISC",
